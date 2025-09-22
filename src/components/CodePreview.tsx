@@ -46,7 +46,7 @@ export class AppComponent {
 
 .component h1 {
   font-size: 2rem;
-  color: #4ade80;
+  color: #E9152D;
   margin-bottom: 1rem;
 }
 
@@ -54,7 +54,7 @@ export class AppComponent {
   color: #9ca3af;
   line-height: 1.6;
 }`,
-    Sass: `$primary-color: #4ade80
+    Sass: `$primary-color: #E9152D
 $background-color: #1a1a1a
 $text-color: #9ca3af
 
@@ -85,14 +85,14 @@ $text-color: #9ca3af
         highlightedLine = line
           .replace(/(import|export|class|extends|from|const|let|var|function|return)/g, '<span class="text-purple-400">$1</span>')
           .replace(/(React|Component|@Component)/g, '<span class="text-blue-400">$1</span>')
-          .replace(/('.*?'|".*?"|\`.*?\`)/g, '<span class="text-green-400">$1</span>')
+          .replace(/('.*?'|".*?"|\`.*?\`)/g, '<span class="text-red-500">$1</span>')
           .replace(/(render|template|selector)/g, '<span class="text-yellow-400">$1</span>')
           .replace(/(\/\/.*)/g, '<span class="text-gray-500">$1</span>');
       } else if (language === 'CSS' || language === 'Sass') {
         highlightedLine = line
           .replace(/([.#][a-zA-Z-]+)/g, '<span class="text-yellow-400">$1</span>')
           .replace(/(display|flex-direction|padding|background|color|font-size|margin-bottom|line-height)/g, '<span class="text-blue-400">$1</span>')
-          .replace(/(#[0-9a-fA-F]{6}|#[0-9a-fA-F]{3})/g, '<span class="text-green-400">$1</span>')
+          .replace(/(#[0-9a-fA-F]{6}|#[0-9a-fA-F]{3})/g, '<span class="text-red-500">$1</span>')
           .replace(/(\$[a-zA-Z-]+)/g, '<span class="text-purple-400">$1</span>');
       }
       
@@ -118,7 +118,7 @@ $text-color: #9ca3af
                   onClick={() => setActiveTab(tab)}
                   className={`text-body px-6 py-3 text-sm font-medium transition-colors duration-200 ${
                     activeTab === tab
-                      ? 'bg-gray-700 text-white border-b-2 border-green-400'
+                      ? 'bg-gray-700 text-white border-b-2 border-red-500'
                       : 'text-gray-400 hover:text-white hover:bg-gray-750'
                   }`}
                 >

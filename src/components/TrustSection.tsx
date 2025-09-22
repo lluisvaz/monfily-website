@@ -66,7 +66,7 @@ const TrustSection: React.FC<TrustSectionProps> = ({ className = '' }) => {
                 )}
                 {company.name === 'monaco' && (
                   <div className="flex items-center space-x-2">
-                    <div className="w-6 h-6 bg-green-500 rounded-sm flex items-center justify-center">
+                    <div className="w-6 h-6 bg-red-500 rounded-sm flex items-center justify-center">
                       <div className="w-3 h-3 bg-white rounded-full"></div>
                     </div>
                     <span>monaco</span>

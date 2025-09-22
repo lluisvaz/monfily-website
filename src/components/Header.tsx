@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-green-400 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center">
               <span className="text-gray-900 font-bold text-sm">M</span>
             </div>
             <span className="text-heading text-white font-bold text-xl">MONFILY</span>
@@ -39,7 +39,7 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
           </nav>
 
           {/* CTA Button */}
-          <button className="bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 text-gray-900 px-6 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105">
+          <button className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105">
             GET TEMPLATE
           </button>
 
