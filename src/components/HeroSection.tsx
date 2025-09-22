@@ -7,8 +7,8 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
   return (
-    <section className={`min-h-screen text-white pt-20 relative overflow-x-hidden ${className}`}>
-      <div className="container mx-auto px-6 py-20">
+    <section className={`min-h-screen text-white pt-8 relative overflow-hidden ${className}`}>
+      <div className="container mx-auto px-6 py-12">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
           <div className="space-y-8">
@@ -21,17 +21,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
             </div>
 
             {/* Main Headline */}
-            <div className="space-y-4">
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+            <div className="space-y-1">
+              <h1 className="font-heading tracking-tighter text-[56px] md:text-[56px] lg:text-[80px] leading-none">
                 Build new products
               </h1>
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+              <h1 className="font-heading tracking-tighter text-[56px] md:text-[56px] lg:text-[80px] leading-none">
                 for <span className="text-green-400">startups</span>
               </h1>
             </div>
 
             {/* Description */}
-            <p className="text-xl text-gray-300 leading-relaxed max-w-lg">
+            <p className="text-body text-[18px] text-gray-300 leading-tight max-w-lg">
               Our framework component is built to handle scaling demands with agility. Lightning-fast performance is our promise.
             </p>
 
@@ -62,15 +62,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
           </div>
         </div>
       </div>
-      {/* Enhanced red radial glow at bottom - positioned lower with increased intensity and expanded area */}
+      {/* Red glow effect */}
       <div 
-        className="absolute left-0 right-0 h-[500px] pointer-events-none overflow-hidden"
+        className="absolute h-[1200px] w-full bottom-[-350px] left-0 pointer-events-none"
         style={{
-          bottom: '-100px',
-          background: 'radial-gradient(ellipse 1200px 600px at 50% 100%, rgba(239, 68, 68, 0.25) 0%, rgba(239, 68, 68, 0.15) 25%, rgba(239, 68, 68, 0.08) 50%, rgba(239, 68, 68, 0.04) 75%, transparent 100%)',
-          filter: 'blur(50px)'
+          background: 'radial-gradient(ellipse 1600px 1000px at 50% 100%, rgba(239, 68, 68, 0.18) 0%, rgba(239, 68, 68, 0.12) 30%, rgba(239, 68, 68, 0.06) 60%, rgba(239, 68, 68, 0.02) 80%, transparent 100%)'
         }}
-      ></div>
+      />
     </section>
   );
 };

@@ -116,7 +116,7 @@ $text-color: #9ca3af
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-6 py-3 text-sm font-medium transition-colors duration-200 ${
+                  className={`text-body px-6 py-3 text-sm font-medium transition-colors duration-200 ${
                     activeTab === tab
                       ? 'bg-gray-700 text-white border-b-2 border-green-400'
                       : 'text-gray-400 hover:text-white hover:bg-gray-750'
@@ -135,7 +135,7 @@ $text-color: #9ca3af
                   <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 </div>
-                <span className="text-gray-400 text-sm">
+                <span className="text-body text-gray-400 text-sm">
                   {activeTab.toLowerCase()}.{activeTab === 'React' || activeTab === 'Angular' ? 'tsx' : activeTab.toLowerCase()}
                 </span>
               </div>
@@ -150,7 +150,7 @@ $text-color: #9ca3af
             {/* Documentation Link */}
             <div className="px-6 py-4 bg-gray-750 border-t border-gray-700">
               <div className="flex items-center justify-between">
-                <span className="text-gray-400 text-sm">Documentation</span>
+                <span className="text-body text-gray-400 text-sm">Documentation</span>
                 <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>

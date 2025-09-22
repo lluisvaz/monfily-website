@@ -14,15 +14,15 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800 ${className}`}>
-      <div className="container mx-auto px-6 py-4">
+    <header className={`${className}`}>
+      <div className="container mx-auto px-6 py-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-green-400 rounded-lg flex items-center justify-center">
               <span className="text-gray-900 font-bold text-sm">M</span>
             </div>
-            <span className="text-white font-bold text-xl">MONFILY</span>
+            <span className="text-heading text-white font-bold text-xl">MONFILY</span>
           </div>
 
           {/* Navigation Menu */}
@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium"
+                className="text-body text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium"
               >
                 {item.label}
               </a>

@@ -2,8 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font Face Declarations */
+@font-face {
+  font-family: 'WorkSans';
+  src: url('./assets/fonts/WorkSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter-Bold';
+  src: url('./assets/fonts/Inter-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: 'WorkSans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   line-height: 1.5;
   font-weight: 400;
 
@@ -27,4 +44,27 @@ html, body {
 canvas {
   max-width: 100%;
   height: auto;
+}
+
+/* Typography Utilities */
+@layer components {
+  .text-heading {
+    @apply font-heading tracking-tight leading-none;
+  }
+  
+  .text-heading-lg {
+    @apply font-heading tracking-tighter text-3xl md:text-4xl lg:text-5xl leading-none;
+  }
+  
+  .text-heading-md {
+    @apply font-heading tracking-tight text-2xl md:text-3xl leading-tight;
+  }
+  
+  .text-heading-sm {
+    @apply font-heading tracking-tight text-xl md:text-2xl leading-tight;
+  }
+  
+  .text-body {
+    @apply font-sans;
+  }
 }

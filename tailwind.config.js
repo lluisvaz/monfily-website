@@ -7,7 +7,16 @@ export default {
     container: {
       center: true,
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        'sans': ['WorkSans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Noto Sans', 'Helvetica', 'Arial', 'sans-serif'],
+        'heading': ['Inter-Bold', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Noto Sans', 'Helvetica', 'Arial', 'sans-serif'],
+      },
+      letterSpacing: {
+        'tighter': '-0.05em',
+        'tight': '-0.025em',
+      },
+    },
   },
   plugins: [],
 };

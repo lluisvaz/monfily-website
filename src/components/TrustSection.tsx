@@ -32,7 +32,7 @@ const TrustSection: React.FC<TrustSectionProps> = ({ className = '' }) => {
     <div className={`bg-gray-900 ${className}`}>
       <div className="container mx-auto px-6 py-16">
         <div className="text-center mb-12">
-          <h2 className="text-white text-lg font-medium mb-2">
+          <h2 className="text-heading-sm text-white mb-2">
             TRUSTED BY THE BEST FRONTEND TEAMS
           </h2>
         </div>
@@ -43,7 +43,7 @@ const TrustSection: React.FC<TrustSectionProps> = ({ className = '' }) => {
               key={index}
               className="flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity duration-300"
             >
-              <div className="text-gray-400 font-medium text-lg tracking-wide">
+              <div className="text-body text-gray-400 font-medium text-lg tracking-wide">
                 {company.name === 'luminous' && (
                   <div className="flex items-center space-x-2">
                     <div className="w-6 h-6 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full"></div>
