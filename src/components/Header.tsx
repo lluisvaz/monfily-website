@@ -6,11 +6,10 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ className = '' }) => {
   const menuItems = [
-    { label: 'MENU', href: '#menu' },
-    { label: 'PAGES', href: '#pages' },
-    { label: 'INTEGRATIONS', href: '#integrations' },
-    { label: 'PRICING', href: '#pricing' },
-    { label: 'BLOG', href: '#blog' }
+    { label: 'SOLUÇÕES', href: '#menu' },
+    { label: 'SOBRE NÓS', href: '#pages' },
+    { label: 'BLOG', href: '#integrations' },
+    { label: 'CONTATO', href: '#pricing' }
   ];
 
   return (
