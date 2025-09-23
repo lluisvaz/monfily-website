@@ -14,15 +14,18 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
   ];
 
   return (
-    <header className={`${className}`}>
+    <header className={`bg-transparent ${className}`}>
       <div className="container mx-auto px-6 py-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center">
-              <span className="text-gray-900 font-bold text-sm">M</span>
-            </div>
-            <span className="text-heading text-white font-bold text-xl">MONFILY</span>
+          <div className="flex items-center">
+            <a href="/" className="select-none cursor-pointer">
+              <img 
+                src="/src/assets/images/monfily-logo-header.png" 
+                alt="Monfily Logo" 
+                className="h-12 w-auto object-contain"
+              />
+            </a>
           </div>
 
           {/* Navigation Menu */}
@@ -39,15 +42,16 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
           </nav>
 
           {/* CTA Button */}
-          <button className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105">
-            GET TEMPLATE
+          <button className="hidden md:block bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105">
+            Falar com um especialista
           </button>
 
           {/* Mobile Menu Button */}
           <button className="md:hidden text-white">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            <div className="w-12 h-12 flex flex-col justify-center items-center space-y-3">
+              <div className="w-9 h-0.5 bg-white rounded-full"></div>
+              <div className="w-9 h-0.5 bg-white rounded-full"></div>
+            </div>
           </button>
         </div>
       </div>

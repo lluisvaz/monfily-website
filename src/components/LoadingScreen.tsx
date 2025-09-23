@@ -1,0 +1,63 @@
+import React, { useState, useEffect } from 'react';
+import monfilyIntroGif from '../assets/images/monfily-intro.gif';
+
+interface LoadingScreenProps {
+  onLoadingComplete: () => void;
+}
+
+const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [gifVisible, setGifVisible] = useState(false);
+
+  useEffect(() => {
+    // Inicia o fade-in do GIF após um pequeno delay
+    const gifFadeInTimer = setTimeout(() => {
+      setGifVisible(true);
+    }, 200);
+
+    // Após 4 segundos, inicia o fade-out
+    const fadeOutTimer = setTimeout(() => {
+      setIsFadingOut(true);
+    }, 4000);
+
+    // Após 5.5 segundos, remove completamente o loading screen
+    const completeTimer = setTimeout(() => {
+      setIsVisible(false);
+      onLoadingComplete();
+    }, 6000);
+
+    return () => {
+      clearTimeout(gifFadeInTimer);
+      clearTimeout(fadeOutTimer);
+      clearTimeout(completeTimer);
+    };
+  }, [onLoadingComplete]);
+
+  if (!isVisible) {
+    return null;
+  }
+
+  return (
+    <div 
+      className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-[1500ms] select-none pointer-events-none ${
+        isFadingOut ? 'opacity-0 -translate-y-full' : 'opacity-100 translate-y-0'
+      }`}
+      style={{ backgroundColor: '#000000' }}
+    >
+      <div className="flex items-center justify-center select-none">
+        <img 
+          src={monfilyIntroGif} 
+          alt="Monfily Loading Animation" 
+          className={`w-64 h-64 object-contain transition-opacity duration-800 ease-in select-none pointer-events-none ${
+            gifVisible ? 'opacity-100' : 'opacity-0'
+          }`}
+          draggable={false}
+          style={{ userSelect: 'none', pointerEvents: 'none' }}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default LoadingScreen;

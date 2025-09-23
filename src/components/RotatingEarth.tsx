@@ -124,10 +124,41 @@ export default function RotatingEarth({ width = 1000, height = 1000, className =
       return dots // Removed console.log for better performance
     }
 
+    // Function to check if a country is one of the target countries
+    const isTargetCountry = (countryName: string): boolean => {
+      if (!countryName || typeof countryName !== 'string') {
+        return false
+      }
+      
+      const normalizedName = countryName.toLowerCase().trim()
+      
+      // Only Brazil and United States should be red - very strict matching
+      const targetCountries = [
+        'brazil',
+        'brasil', 
+        'united states',
+        'united states of america',
+        'usa',
+        'us'
+      ]
+      
+      return targetCountries.includes(normalizedName)
+    }
+
     interface DotData {
       lng: number
       lat: number
       visible: boolean
+      opacity: number
+      country: string
+      isTarget: boolean
+    }
+
+    interface BlinkingDot {
+      lng: number
+      lat: number
+      country: string
+      opacity: number
     }
 
     const allDots: DotData[] = []
@@ -155,11 +186,14 @@ export default function RotatingEarth({ width = 1000, height = 1000, className =
 
         // Remove land outlines - no white borders around continents
 
-        // Optimized halftone dots rendering with batching
-        context.fillStyle = "#999999"
+        // Optimized halftone dots rendering with different colors for target countries
         const dotRadius = 1.2 * scaleFactor
         
-        // Use requestAnimationFrame for smoother rendering
+        // Count dots by type for debugging
+        let redDotsRendered = 0
+        let whiteDotsRendered = 0
+        
+        // Render dots with different colors based on country
         allDots.forEach((dot) => {
           const projected = projection([dot.lng, dot.lat])
           if (
@@ -169,11 +203,27 @@ export default function RotatingEarth({ width = 1000, height = 1000, className =
             projected[1] >= -dotRadius &&
             projected[1] <= size + dotRadius
           ) {
+            if (dot.isTarget) {
+              // Red color for target countries (Brazil, United States) - static, no blinking
+              context.fillStyle = `rgba(233, 21, 45, 0.8)`
+              redDotsRendered++
+            } else {
+              // White color for all other countries
+              context.fillStyle = `rgba(255, 255, 255, 0.6)`
+              whiteDotsRendered++
+            }
             context.beginPath()
             context.arc(projected[0], projected[1], dotRadius, 0, 2 * Math.PI)
             context.fill()
           }
         })
+        
+        // Log rendering statistics every 100 frames to avoid spam
+        if (Math.random() < 0.01) { // ~1% chance per frame
+          console.log(`🎨 Rendered: ${redDotsRendered} RED dots, ${whiteDotsRendered} WHITE dots`)
+        }
+
+        // No additional blinking dots - removed all blinking animations
       }
     }
 
@@ -228,16 +278,25 @@ export default function RotatingEarth({ width = 1000, height = 1000, className =
         // Generate dots for all land features with optimized spacing
         if (landFeatures.features) {
           landFeatures.features.forEach((feature: any) => {
+            const countryName = feature.properties?.NAME || feature.properties?.name || feature.properties?.NAME_EN || 'Unknown'
+            const isTarget = isTargetCountry(countryName)
             const dots = generateDotsInPolygon(feature, 20)
+            
             dots.forEach(([lng, lat]) => {
-              allDots.push({ lng, lat, visible: true })
+              allDots.push({ 
+                lng, 
+                lat, 
+                visible: true, 
+                opacity: 0.8,
+                country: countryName,
+                isTarget: isTarget
+              })
             })
           })
         }
 
         render()
         setIsLoading(false)
-        console.log(`Generated ${allDots.length} dots for visualization`)
       } catch (err) {
         console.error('Error loading world data:', err)
         setError(`Failed to load geographic data: ${err instanceof Error ? err.message : 'Unknown error'}`)
@@ -250,14 +309,17 @@ export default function RotatingEarth({ width = 1000, height = 1000, className =
     let autoRotate = true
     const rotationSpeed = 0.08 // Slightly slower for smoother performance
     let animationId: number
+    let blinkTime = 0
+
+    // Removed blinking animation - all dots now have static colors
 
     const rotate = () => {
       if (autoRotate) {
         rotation[0] += rotationSpeed
         // Keep the tilt angles constant during auto-rotation
         projection.rotate([rotation[0], -15, 10])
-        render()
       }
+      render()
       animationId = requestAnimationFrame(rotate)
     }
 
