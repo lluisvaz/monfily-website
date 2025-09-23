@@ -10,6 +10,17 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   const [isSlidingOut, setIsSlidingOut] = useState(false);
   const [gifVisible, setGifVisible] = useState(false);
 
+  // CSS para acelerar o GIF
+  const gifSpeedStyle = `
+    .gif-fast {
+      animation: gif-speed 0.5s infinite linear;
+    }
+    @keyframes gif-speed {
+      0% { transform: scale(1); }
+      100% { transform: scale(1); }
+    }
+  `;
+
   useEffect(() => {
     // Inicia o fade-in do GIF após um pequeno delay
     const gifFadeInTimer = setTimeout(() => {
@@ -19,13 +30,13 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
     // Após 4 segundos, inicia o slide-out
     const slideOutTimer = setTimeout(() => {
       setIsSlidingOut(true);
-    }, 4000);
+    }, 2000);
 
     // Após 5.5 segundos, remove completamente o loading screen
     const completeTimer = setTimeout(() => {
       setIsVisible(false);
       onLoadingComplete();
-    }, 6000);
+    }, 4000);
 
     return () => {
       clearTimeout(gifFadeInTimer);
@@ -45,15 +56,21 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
       }`}
       style={{ backgroundColor: '#000000' }}
     >
+      <style>{gifSpeedStyle}</style>
       <div className="flex items-center justify-center select-none">
         <img 
           src={monfilyIntroGif} 
           alt="Monfily Loading Animation" 
-          className={`w-64 h-64 object-contain transition-opacity duration-800 ease-in select-none pointer-events-none ${
+          className={`w-64 h-64 object-contain transition-opacity duration-800 ease-in select-none pointer-events-none gif-fast ${
             gifVisible ? 'opacity-100' : 'opacity-0'
           }`}
           draggable={false}
-          style={{ userSelect: 'none', pointerEvents: 'none' }}
+          style={{ 
+            userSelect: 'none', 
+            pointerEvents: 'none',
+            imageRendering: 'pixelated',
+            filter: 'contrast(1.1)'
+          }}
         />
       </div>
     </div>

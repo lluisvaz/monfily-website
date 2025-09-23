@@ -37,14 +37,24 @@ const SolutionsSection: React.FC<SolutionsSectionProps> = ({ className = '' }) =
     <section className={`bg-white py-20 ${className}`}>
       <div className="container mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Nossas <span className="text-red-500">Soluções</span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Transformamos ideias em realidade digital através de soluções inovadoras 
-            e tecnologias de ponta, sempre focados na excelência e resultados.
-          </p>
+        <div className="mb-16">
+          <div className="max-w-4xl">
+            {/* Pré-título */}
+            <p className="text-sm font-semibold text-red-500 uppercase tracking-wider mb-4">
+              Nossas Especialidades
+            </p>
+            
+            {/* Título Principal */}
+            <h2 className="font-heading tracking-tighter text-[46px] md:text-[50px] lg:text-[60px] leading-none text-gray-900 mb-6">
+              Soluções <span className="text-red-500">Inovadoras</span>
+            </h2>
+            
+            {/* Subtítulo */}
+            <p className="text-xl text-gray-600 max-w-2xl leading-tight">
+              Transformamos ideias em realidade digital através de soluções inovadoras 
+              e tecnologias de ponta, sempre focados na excelência e resultados.
+            </p>
+          </div>
         </div>
 
         {/* Solutions Grid */}
