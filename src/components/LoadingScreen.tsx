@@ -7,7 +7,7 @@ interface LoadingScreenProps {
 
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   const [isVisible, setIsVisible] = useState(true);
-  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [isSlidingOut, setIsSlidingOut] = useState(false);
   const [gifVisible, setGifVisible] = useState(false);
 
   useEffect(() => {
@@ -16,9 +16,9 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
       setGifVisible(true);
     }, 200);
 
-    // Após 4 segundos, inicia o fade-out
-    const fadeOutTimer = setTimeout(() => {
-      setIsFadingOut(true);
+    // Após 4 segundos, inicia o slide-out
+    const slideOutTimer = setTimeout(() => {
+      setIsSlidingOut(true);
     }, 4000);
 
     // Após 5.5 segundos, remove completamente o loading screen
@@ -29,7 +29,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
 
     return () => {
       clearTimeout(gifFadeInTimer);
-      clearTimeout(fadeOutTimer);
+      clearTimeout(slideOutTimer);
       clearTimeout(completeTimer);
     };
   }, [onLoadingComplete]);
@@ -40,8 +40,8 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
 
   return (
     <div 
-      className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-[1500ms] select-none pointer-events-none ${
-        isFadingOut ? 'opacity-0 -translate-y-full' : 'opacity-100 translate-y-0'
+      className={`fixed inset-0 z-50 flex items-center justify-center transition-transform duration-[1500ms] ease-in-out select-none pointer-events-none ${
+        isSlidingOut ? '-translate-y-full' : 'translate-y-0'
       }`}
       style={{ backgroundColor: '#000000' }}
     >
