@@ -73,11 +73,11 @@ const TypewriterText: React.FC = () => {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
   return (
-    <section className={`min-h-[105vh] lg:min-h-screen text-white pt-2 relative overflow-hidden ${className}`}>
+    <section className={`min-h-[110vh] lg:min-h-screen text-white pt-2 relative overflow-hidden ${className}`}>
       <div className="container mx-auto px-6 py-2">
         <div className="grid lg:grid-cols-2 gap-8 items-center mt-8">
           {/* Left Column - Text Content */}
-          <div className="space-y-6 relative z-10">
+          <div className="space-y-6 relative z-10 mt-12 lg:mt-0">
             {/* Watch Event Badge */}
             <div className="inline-flex items-center space-x-2 backdrop-blur-sm bg-white/10 px-4 py-2 rounded-full text-sm">
               <span className="text-white">Reduza seus custos operacionais</span>

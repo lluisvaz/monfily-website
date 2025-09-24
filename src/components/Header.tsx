@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
               <img 
                 src={logoImage} 
                 alt="Monfily Logo" 
-                className="h-8 sm:h-10 md:h-12 w-auto object-contain"
+                className="h-10 sm:h-12 md:h-12 w-auto object-contain"
               />
             </a>
           </div>
@@ -47,9 +47,9 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
 
           {/* Mobile Menu Button */}
           <button className="lg:hidden text-white">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 flex flex-col justify-center items-center space-y-2 sm:space-y-3">
-              <div className="w-6 sm:w-9 h-0.5 bg-white rounded-full"></div>
-              <div className="w-6 sm:w-9 h-0.5 bg-white rounded-full"></div>
+            <div className="w-12 h-12 sm:w-14 sm:h-14 flex flex-col justify-center items-center space-y-2 sm:space-y-3">
+              <div className="w-7 sm:w-10 h-0.5 bg-white rounded-full"></div>
+              <div className="w-7 sm:w-10 h-0.5 bg-white rounded-full"></div>
             </div>
           </button>
         </div>
