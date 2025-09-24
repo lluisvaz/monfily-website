@@ -8,9 +8,6 @@ export default {
       center: true,
     },
     extend: {
-      screens: {
-        'xs': '400px',
-      },
       fontFamily: {
         'sans': ['WorkSans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Noto Sans', 'Helvetica', 'Arial', 'sans-serif'],
         'heading': ['Inter-Bold', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Noto Sans', 'Helvetica', 'Arial', 'sans-serif'],
