@@ -98,10 +98,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 flex-1 sm:flex-none">
-                Inicie seu Projeto
+                Agende uma análise gratuita
               </button>
               <button className="text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 hover:text-[#C02020] flex-none sm:flex-none flex items-center gap-2 justify-center sm:justify-start">
-                Explore nossas Soluções
+                Conheça nossas soluções
                 <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
