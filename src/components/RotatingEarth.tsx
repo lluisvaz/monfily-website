@@ -358,8 +358,46 @@ export default function RotatingEarth({ width = 1000, height = 1000, className =
       document.addEventListener("mouseup", handleMouseUp)
     }
 
-    // Zoom functionality removed as requested
+    // Touch event handlers for mobile interaction
+    const handleTouchStart = (event: TouchEvent) => {
+      event.preventDefault()
+      autoRotate = false
+      const touch = event.touches[0]
+      const startX = touch.clientX
+      const startY = touch.clientY
+      const startRotation = [...rotation]
+
+      const handleTouchMove = (moveEvent: TouchEvent) => {
+        event.preventDefault()
+        const touch = moveEvent.touches[0]
+        const sensitivity = 0.5
+        const dx = touch.clientX - startX
+        // Restrict movement to horizontal axis only
+        rotation[0] = startRotation[0] + dx * sensitivity
+        // Keep the tilt angles constant during manual rotation
+        rotation[1] = -15
+        rotation[2] = 10
+
+        projection.rotate([rotation[0], -15, 10])
+        render()
+      }
+
+      const handleTouchEnd = () => {
+        document.removeEventListener("touchmove", handleTouchMove)
+        document.removeEventListener("touchend", handleTouchEnd)
+
+        setTimeout(() => {
+          autoRotate = true
+        }, 10)
+      }
+
+      document.addEventListener("touchmove", handleTouchMove, { passive: false })
+      document.addEventListener("touchend", handleTouchEnd)
+    }
+
+    // Add both mouse and touch event listeners
     canvas.addEventListener("mousedown", handleMouseDown)
+    canvas.addEventListener("touchstart", handleTouchStart, { passive: false })
 
     // Handle resize
     const handleResize = () => {
@@ -391,6 +429,7 @@ export default function RotatingEarth({ width = 1000, height = 1000, className =
     return () => {
       cancelAnimationFrame(animationId)
       canvas.removeEventListener("mousedown", handleMouseDown)
+      canvas.removeEventListener("touchstart", handleTouchStart)
       window.removeEventListener('resize', handleResize)
     }
   }, [width, height])
