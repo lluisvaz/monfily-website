@@ -73,7 +73,7 @@ const TypewriterText: React.FC = () => {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
   return (
-    <section className={`min-h-[110vh] lg:min-h-screen text-white pt-2 relative overflow-hidden ${className}`}>
+    <section className={`min-h-[120vh] lg:min-h-screen text-white pt-2 relative overflow-hidden ${className}`}>
       <div className="container mx-auto px-6 py-2">
         <div className="grid lg:grid-cols-2 gap-8 items-center mt-8">
           {/* Left Column - Text Content */}
