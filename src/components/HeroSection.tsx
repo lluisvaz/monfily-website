@@ -73,36 +73,36 @@ const TypewriterText: React.FC = () => {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
   return (
-    <section className={`min-h-[100vh] sm:min-h-[95vh] md:min-h-[90vh] text-white pt-2 relative overflow-hidden ${className}`}>
-      <div className="container mx-auto px-4 xs:px-6 py-2">
-        <div className="grid lg:grid-cols-2 gap-6 xs:gap-8 items-center mt-6 xs:mt-8">
+    <section className={`min-h-[105vh] lg:min-h-screen text-white pt-2 relative overflow-hidden ${className}`}>
+      <div className="container mx-auto px-6 py-2">
+        <div className="grid lg:grid-cols-2 gap-8 items-center mt-8">
           {/* Left Column - Text Content */}
-          <div className="space-y-4 xs:space-y-6 relative z-10">
+          <div className="space-y-6 relative z-10">
             {/* Watch Event Badge */}
-            <div className="inline-flex items-center space-x-2 backdrop-blur-sm bg-white/10 px-2 xs:px-3 py-1 xs:py-1.5 rounded-full text-xs xs:text-base md:text-sm">
+            <div className="inline-flex items-center space-x-2 backdrop-blur-sm bg-white/10 px-4 py-2 rounded-full text-sm">
               <span className="text-white">Reduza seus custos operacionais</span>
             </div>
 
             {/* Main Headline */}
             <div className="space-y-1">
-              <h1 className="font-heading tracking-tighter text-[28px] xs:text-[40px] md:text-[50px] lg:text-[60px] leading-tight xs:leading-none">
+              <h1 className="font-heading tracking-tighter text-[46px] md:text-[50px] lg:text-[60px] leading-none">
                 Sua operação, nossa obsessão. Um código pensado para <TypewriterText />
               </h1>
             </div>
 
             {/* Description */}
-            <p className="text-body text-[14px] xs:text-[18px] md:text-[18px] text-gray-300 leading-tight max-w-lg">
+            <p className="text-body text-[18px] text-gray-300 leading-tight max-w-lg">
               Produtos digitais de alta performance, testes de software abrangentes e entregas automatizadas.
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-2 xs:gap-3">
-              <button className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 xs:px-6 py-2 xs:py-2.5 md:px-8 md:py-3 rounded-lg text-xs xs:text-sm md:text-base font-semibold transition-all duration-200 transform hover:scale-105 flex-1 sm:flex-none">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 flex-1 sm:flex-none">
                 Agende uma análise gratuita
               </button>
-              <button className="text-white px-3 xs:px-4 py-2 xs:py-2.5 md:px-6 md:py-3 rounded-lg text-xs xs:text-sm md:text-base font-semibold transition-colors duration-200 hover:text-[#C02020] flex-none sm:flex-none flex items-center gap-2 justify-center sm:justify-start">
+              <button className="text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 hover:text-[#C02020] flex-none sm:flex-none flex items-center gap-2 justify-center sm:justify-start">
                 Conheça nossas soluções
-                <svg className="w-3 h-3 md:w-4 md:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
@@ -110,8 +110,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
           </div>
 
           {/* Right Column - Rotating Earth Globe */}
-          <div className="hidden lg:block">
-            <div className="flex justify-center items-center h-[700px] w-full overflow-hidden">
+          <div className="lg:block">
+            {/* Desktop Globe */}
+            <div className="hidden lg:flex justify-center items-center h-[700px] w-full overflow-hidden">
               <div className="flex justify-center items-center max-w-full">
                 <div className="w-[650px] h-[650px] max-w-full overflow-hidden cursor-grab active:cursor-grabbing">
                   <RotatingEarth 
@@ -126,12 +127,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
         </div>
       </div>
       
-      {/* Mobile Globe - Positioned at bottom center, partially hidden */}
+      {/* Mobile Globe - Enlarged and Centered with partial visibility */}
       <div className="lg:hidden absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-0">
-        <div className="w-[600px] h-[600px] overflow-hidden cursor-grab active:cursor-grabbing">
+        <div className="w-[120vw] h-[120vw] max-w-[800px] max-h-[800px] overflow-hidden cursor-grab active:cursor-grabbing">
           <RotatingEarth 
-            width={600} 
-            height={600} 
+            width={800} 
+            height={800} 
             className="w-full h-full object-contain" 
           />
         </div>
